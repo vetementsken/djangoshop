@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %} Главная {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{{ item.title }}</h1>
+        <h3>Цена: {{ item.price }}рублей.</h3>
+        <div class="row">
+            <div class="col-md-2">
+                <a href="{{ item.get_absolute_url }}"><img
+                        src="{{ item.image.url }}" class="card-img-top" alt="..."></a>
+            </div>
+            <div class="col">
+                <p>{{ item.characteristics|safe }}</p>
+            </div>
+            <div class="col-md-7">
+                        <h3>Описание:</h3>
+        <p>{{ item.description }}</p>
+            </div>
+        </div>
+
+        <a href="{{ item.get_add_to_cart_url }}" class="btn btn-primary">Добавить в корзину</a>
+        <a href="{{ item.get_remove_from_cart_url }}" class="btn btn-danger">Убрать из корзины</a>
+    </div>
+
+{% endblock %}
